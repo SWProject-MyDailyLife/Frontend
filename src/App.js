@@ -23,7 +23,7 @@ const App = () => {
             <Route path='sign-up' element={<SignUp/>}/>
         </Route>
         <Route path="/mydailylife" element={<MainContainer/>}>
-            {/* <Route path="home" element={<HomeContainer/>}/>
+            <Route path="home" element={<HomeContainer/>}/>
             <Route path='follow' element={<FollowContainer/>}/>
             <Route path='search' element={<SearchContainer/>}/>
             <Route path='message' element={<MessageContainer/>}/>
@@ -32,7 +32,7 @@ const App = () => {
             <Route path='profile-edit' element={<ProfileEdit/>}>
                 <Route path='edit' element={<Edit/>}/>
                 <Route path='password' element={<Password/>}/>
-            </Route> */}
+            </Route>
         </Route>
       </Routes>
     </Router>
