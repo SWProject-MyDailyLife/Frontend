@@ -31,13 +31,21 @@ const SignUp = () => {
     const navigate = useNavigate();
 
     const onSubmit = () => {
-        authAxios.post("/join", inputs)
+        const signupData = {
+            user_id: inputs.email,
+            password: inputs.password,
+            name: inputs.name,
+            nickname: inputs.nickname,
+            phone: inputs.phone
+        };
+
+        authAxios.post("/signup", signupData)
             .then((res) => {
-                alert(res.data);
+                alert(res.data.message);
                 navigate("/users/sign-in");
             })
             .catch((err) => {
-                alert(err.response.data);
+                alert(err.response.data.message);
             });
     };
 

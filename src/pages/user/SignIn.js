@@ -27,14 +27,19 @@ const SignIn = () => {
     const navigate = useNavigate();
 
     const onSubmit = () => {
-        authAxios.post("/login", inputs)
+        const loginData = {
+            user_id: inputs.email,
+            password: inputs.password
+        };
+
+        authAxios.post("/login", loginData)
             .then((res) => {
-                const accessToken = res.data.accessToken;
+                const accessToken = res.data.message;  // 로그인 성공 메시지 대신 토큰을 반환하도록 백엔드 수정 필요
                 setToken(accessToken);
                 alert("로그인에 성공하였습니다!");
             })
             .catch((err) => {
-                alert(err.response.data);
+                alert(err.response.data.message);
             });
     };
 

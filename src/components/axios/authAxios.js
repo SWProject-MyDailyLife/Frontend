@@ -6,7 +6,7 @@ const headers = {
 }
 
 const authAxios = axios.create({
-    baseURL: '/api/users',
+    baseURL: 'http://127.0.0.1:5000/api',
     headers: headers
 });
 
