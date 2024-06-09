@@ -17,12 +17,19 @@ const PhotoGallery = () => {
           const response = await axios.get('http://127.0.0.1:5000/api/photos', {
             withCredentials: true
           });
+          console.log(response)
           setPhotos(response.data);
         } else {
           console.log('User is not logged in.');
         }
       } catch (error) {
-        console.error('Error fetching photos:', error);
+        if (error.response) {
+          // 서버 응답이 존재하는 경우
+          console.error('Error fetching photos:', error.response.data);
+        } else {
+          // 서버 응답이 존재하지 않는 경우
+          console.error('Error fetching photos:', error.message);
+        }
       }
     };
 

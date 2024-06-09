@@ -35,23 +35,42 @@ const SignIn = () => {
 
         authAxios.post("/login", loginData)
             .then((res) => {
-                const accessToken = res.data.message;  // 로그인 성공 메시지 대신 토큰을 반환하도록 백엔드 수정 필요
-                setToken(accessToken);
-                console.log(accessToken)
+                sessionStorage.setItem('user_id', res.data.user_id);
+                console.log(sessionStorage.getItem('user_id'));
                 alert("로그인에 성공하였습니다!");
+                navigate("/mydailylife");
             })
             .catch((err) => {
                 alert(err.response.data.message);
             });
     };
 
-    useEffect(() => {
-        if(token.length === 0) {
-            return
-        }
-        localStorage.setItem('accessToken', token);
-        navigate("/mydailylife")
-    }, [token])
+    // const onSubmit = () => {
+    //     const loginData = {
+    //         user_id: inputs.email,
+    //         password: inputs.password
+    //     };
+
+    //     authAxios.post("/login", loginData)
+    //         .then((res) => {
+    //             sessionStorage.setItem('user_id', inputs.email);
+    //             // const accessToken = res.data.message;  // 로그인 성공 메시지 대신 토큰을 반환하도록 백엔드 수정 필요
+    //             // setToken(accessToken);
+    //             // console.log(accessToken)
+    //             alert("로그인에 성공하였습니다!");
+    //         })
+    //         .catch((err) => {
+    //             alert(err.response.data.message);
+    //         });
+    // };
+
+    // useEffect(() => {
+    //     if(token.length === 0) {
+    //         return
+    //     }
+    //     localStorage.setItem('accessToken', token);
+    //     navigate("/mydailylife")
+    // }, [token])
 
 
 
