@@ -5,7 +5,7 @@ import SignIn from "./pages/user/SignIn";
 import SignUp from "./pages/user/SignUp";
 import MainContainer from "./pages/MainContainer";
 import HomeContainer from "./pages/home/HomeContainer";
-import FollowContainer from "./pages/follow/FollowContainer";
+import UserlistContainer from "./pages/userlist/UserlistContainer";
 import SearchContainer from "./pages/serach/SearchContainer";
 import MessageContainer from "./pages/message/MessageContainer";
 import PostContainer from "./pages/post/PostContainer";
@@ -24,15 +24,15 @@ const App = () => {
         </Route>
         <Route path="/mydailylife" element={<MainContainer/>}>
             <Route path="home" element={<HomeContainer/>}/>
-            <Route path='follow' element={<FollowContainer/>}/>
-            <Route path='search' element={<SearchContainer/>}/>
+            <Route path='userlist' element={<UserlistContainer/>}/>
+            {/* <Route path='search' element={<SearchContainer/>}/>
             <Route path='message' element={<MessageContainer/>}/>
             <Route path='post' element={<PostContainer/>}/>
             <Route path='profile' element={<ProfileContainer/>}/>
             <Route path='profile-edit' element={<ProfileEdit/>}>
                 <Route path='edit' element={<Edit/>}/>
                 <Route path='password' element={<Password/>}/>
-            </Route>
+            </Route> */}
         </Route>
       </Routes>
     </Router>
