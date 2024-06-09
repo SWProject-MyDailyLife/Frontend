@@ -7,7 +7,7 @@ const headers = {
 }
 
 const multiFileAxios = axios.create({
-    baseURL: '/api',
+    baseURL: 'http://127.0.0.1:5000/api',
     headers: headers
 });
 
@@ -16,7 +16,11 @@ multiFileAxios.interceptors.response.use(
         return response;
     },
     (error) => {
-        alert(error.response.data);
+        if (error.response.status === 401) {
+            alert("Unauthorized access. Please log in.");
+        } else {
+            alert(error.response.data.message);
+        }
         return Promise.reject(error);
     }
 );

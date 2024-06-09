@@ -6,6 +6,7 @@ import authAxios from "../../components/axios/authAxios";
 const SignIn = () => {
     const [token, setToken] = useState('');
 
+
     const signin = [
         {name: 'email', type: 'text', placeholder: '이메일'},
         {name: 'password', type: 'password', placeholder: '비밀번호'}
@@ -36,6 +37,7 @@ const SignIn = () => {
             .then((res) => {
                 const accessToken = res.data.message;  // 로그인 성공 메시지 대신 토큰을 반환하도록 백엔드 수정 필요
                 setToken(accessToken);
+                console.log(accessToken)
                 alert("로그인에 성공하였습니다!");
             })
             .catch((err) => {
@@ -50,6 +52,8 @@ const SignIn = () => {
         localStorage.setItem('accessToken', token);
         navigate("/mydailylife")
     }, [token])
+
+
 
     return (
         <>

@@ -7,7 +7,8 @@ const headers = {
 
 const authAxios = axios.create({
     baseURL: 'http://127.0.0.1:5000/api',
-    headers: headers
+    headers: headers,
+    withCredentials: true
 });
 
 authAxios.interceptors.response.use(

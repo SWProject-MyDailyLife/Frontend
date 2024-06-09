@@ -6,13 +6,8 @@ import SignUp from "./pages/user/SignUp";
 import MainContainer from "./pages/MainContainer";
 import HomeContainer from "./pages/home/HomeContainer";
 import UserlistContainer from "./pages/userlist/UserlistContainer";
-import SearchContainer from "./pages/serach/SearchContainer";
 import MessageContainer from "./pages/message/MessageContainer";
 import PostContainer from "./pages/post/PostContainer";
-import ProfileContainer from "./pages/profile/ProfileContainer";
-import ProfileEdit from "./pages/profile/modify/ProfileEdit";
-import Edit from "./pages/profile/modify/Edit";
-import Password from "./pages/profile/modify/Password";
 
 const App = () => {
   return (
@@ -25,14 +20,9 @@ const App = () => {
         <Route path="/mydailylife" element={<MainContainer/>}>
             <Route path="home" element={<HomeContainer/>}/>
             <Route path='userlist' element={<UserlistContainer/>}/>
-            {/* <Route path='search' element={<SearchContainer/>}/>
-            <Route path='message' element={<MessageContainer/>}/>
+            {/* <Route path='search' element={<SearchContainer/>}/> */}
+            {/* <Route path='message' element={<MessageContainer/>}/> */}
             <Route path='post' element={<PostContainer/>}/>
-            <Route path='profile' element={<ProfileContainer/>}/>
-            <Route path='profile-edit' element={<ProfileEdit/>}>
-                <Route path='edit' element={<Edit/>}/>
-                <Route path='password' element={<Password/>}/>
-            </Route> */}
         </Route>
       </Routes>
     </Router>
