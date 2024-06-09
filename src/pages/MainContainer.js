@@ -13,16 +13,16 @@ const MainContainer = () => {
     const navigate = useNavigate();
     const [token, setToken] = useState('');
 
-    useEffect(() => {
-        if(token.length === 0) {
-            return
-        }
+    // useEffect(() => {
+    //     if(token.length === 0) {
+    //         return
+    //     }
 
-    }, [token, navigate, dispatch]);
+    // }, [token, navigate, dispatch]);
 
-    useEffect(() => {
-        setToken(localStorage.getItem("accessToken"));
-    }, [])
+    // useEffect(() => {
+    //     setToken(localStorage.getItem("accessToken"));
+    // }, [])
 
     return (
         <div className={style.outstagram_container}>
