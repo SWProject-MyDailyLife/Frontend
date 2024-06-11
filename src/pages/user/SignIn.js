@@ -8,7 +8,7 @@ const SignIn = () => {
     const navigate = useNavigate();
 
     const signin = [
-        { name: 'email', type: 'text', placeholder: '이메일' },
+        { name: 'email', type: 'text', placeholder: '아이디' },
         { name: 'password', type: 'password', placeholder: '비밀번호' }
     ];
 

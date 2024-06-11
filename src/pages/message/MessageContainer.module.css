@@ -1,0 +1,31 @@
+.total-container {
+    border: 4px solid black; /* 검은색 테두리 */
+    padding: 20px; /* 내부 여백 */
+  }
+  
+  .message-container {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .message-container li {
+    margin-bottom: 10px;
+  }
+  
+  .message-container li p {
+    margin: 0;
+    padding: 5px 10px;
+    border-radius: 10px;
+    max-width: 70%;
+  }
+  
+  .message-container li p.user-id {
+    font-weight: bold;
+  }
+  
+  .message-container li p.message-content {
+    background-color: #e5e5ea; /* 배경색 */
+  }
+  
+  /* 필요에 따라 스타일을 조정하세요 */
+  
