@@ -30,14 +30,12 @@ const SearchContainer = () => {
                     value={keyword}
                     onChange={(e) => setKeyword(e.target.value)}
                 />
-                <button onClick={handleSearch}>Search</button>
+                <button className={styles.button} onClick={handleSearch}>Search</button>
             </div>
-            <div>
+            <div className={styles.results}>
                 {results.map((photo) => (
-                    <div key={photo._id}>
-                        <p>Description: {photo.description}</p>
-                        <p>Keywords: {photo.keywords}</p>
-                        <p>User ID: {photo.user_id}</p>
+                    <div key={photo._id} className={styles.photoContainer}>
+                        <img src={photo.photo_url} alt="Photo" className={styles.photo} />
                     </div>
                 ))}
             </div>

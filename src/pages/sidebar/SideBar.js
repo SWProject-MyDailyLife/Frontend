@@ -50,7 +50,7 @@ const SideBar = () => {
                     if(idx === sideBar.length-1) {
                         return (
                             <Link key={idx} to={side.link} className={style.side_menu}>
-                                <img className={style.profile_img} src={Static_Base_Url + userDetail.profileUrl}/>
+                                <i className={side.iclass}/>
                                 <div className={style.side_menu_text}>{side.name}</div>
                             </Link>
                         );
