@@ -4,9 +4,11 @@ import './HomeController.css'; // Import the CSS file with styles
 
 const PhotoGallery = () => {
     const [photos, setPhotos] = useState([]);
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+    const [isMessageModalOpen, setIsMessageModalOpen] = useState(false);
     const [currentPhoto, setCurrentPhoto] = useState(null);
     const [newKeyword, setNewKeyword] = useState('');
+    const [messageContent, setMessageContent] = useState('');
 
     useEffect(() => {
         const fetchPhotos = async () => {
@@ -38,18 +40,19 @@ const PhotoGallery = () => {
     const handleEdit = (photo) => {
         setCurrentPhoto(photo);
         setNewKeyword(photo.keywords);
-        setIsModalOpen(true);
+        setIsEditModalOpen(true);
     };
 
-    const handleMessage = (photoId) => {
-        console.log(`Sending message about photo with ID: ${photoId}`);
+    const handleMessage = (photo) => {
+        setCurrentPhoto(photo);
+        setIsMessageModalOpen(true);
     };
 
     const handleSave = async () => {
         try {
             const isLoggedIn = sessionStorage.getItem('user_id');
             
-            // // 서버에 수정된 키워드 전송
+            // 서버에 수정된 키워드 전송
             // await axios.put(`http://127.0.0.1:5000/api/photos/${currentPhoto._id}`, {
             //     keywords: newKeyword
             // }, {
@@ -62,14 +65,37 @@ const PhotoGallery = () => {
             setPhotos(photos.map(photo =>
                 photo._id === currentPhoto._id ? { ...photo, keywords: newKeyword } : photo
             ));
-            setIsModalOpen(false);
+            setIsEditModalOpen(false);
         } catch (error) {
             console.error('Error saving keyword:', error);
         }
     };
 
+    const handleSendMessage = async () => {
+        try {
+            const userId = sessionStorage.getItem('user_id');
+            console.log(currentPhoto.user_id)
+            const message = {
+                user_id: userId,
+                to_user_id: currentPhoto.user_id,
+                message: messageContent
+            };
+
+            const response = await axios.post('http://127.0.0.1:5000/api/messages', message);
+
+            if (response.status === 201) {
+                console.log('Message sent successfully');
+                setIsMessageModalOpen(false);
+                setMessageContent('');
+            }
+        } catch (error) {
+            console.error('Error sending message:', error);
+        }
+    };
+
     const handleModalClose = () => {
-        setIsModalOpen(false);
+        setIsEditModalOpen(false);
+        setIsMessageModalOpen(false);
     };
 
     return (
@@ -89,12 +115,12 @@ const PhotoGallery = () => {
                         {/* 수정 버튼 */}
                         <button className="edit-button" onClick={() => handleEdit(photo)}>수정</button>
                         {/* 메시지 버튼 */}
-                        <button className="edit-button" onClick={() => handleMessage(photo._id)}>메시지</button>
+                        <button className="edit-button" onClick={() => handleMessage(photo)}>메시지</button>
                     </div>
                 </div>
             ))}
 
-            {isModalOpen && (
+            {isEditModalOpen && (
                 <div className="modal">
                     <div className="modal-content">
                         <h2>키워드 수정</h2>
@@ -104,6 +130,21 @@ const PhotoGallery = () => {
                             onChange={(e) => setNewKeyword(e.target.value)}
                         />
                         <button onClick={handleSave}>저장</button>
+                        <button onClick={handleModalClose}>취소</button>
+                    </div>
+                </div>
+            )}
+
+            {isMessageModalOpen && (
+                <div className="modal">
+                    <div className="modal-content">
+                        <h2>메시지 보내기</h2>
+                        <textarea
+                            value={messageContent}
+                            onChange={(e) => setMessageContent(e.target.value)}
+                            placeholder="메시지를 입력하세요"
+                        />
+                        <button onClick={handleSendMessage}>전송</button>
                         <button onClick={handleModalClose}>취소</button>
                     </div>
                 </div>
