@@ -26,7 +26,7 @@ const SideBar = () => {
     const sideBar = [
         {link: '/mydailylife/home', name: '유저 게시물', iclass: 'bi bi-instagram fs-3'},
         {link: '/mydailylife/userlist', name: '사용자 목록', iclass: 'bi bi-people fs-3'},
-        {link: '/mydailylife/search', name: '탐색', iclass: 'bi bi-compass fs-3'},
+        {link: '/mydailylife/search', name: '검색', iclass: 'bi bi-compass fs-3'},
         {link: '/mydailylife/message', name: '메세지', iclass: 'bi bi-chat fs-3'},
         {link: '/mydailylife/post', name: '업로드', iclass: 'bi bi-plus-square fs-3'},
     ]

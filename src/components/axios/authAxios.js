@@ -69,11 +69,11 @@
 import axios from "axios";
 
 // axios 기본 설정
-axios.defaults.withCredentials = true;
+// axios.defaults.withCredentials = true;
 
 const authAxios = axios.create({
     baseURL: 'http://127.0.0.1:5000/api',
-    withCredentials: true,
+    // withCredentials: true,
     headers: {
         'Access-Control-Allow-Origin': '*',
     }

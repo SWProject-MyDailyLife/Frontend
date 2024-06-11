@@ -6,6 +6,7 @@ import SignUp from "./pages/user/SignUp";
 import MainContainer from "./pages/MainContainer";
 import HomeContainer from "./pages/home/HomeContainer";
 import UserlistContainer from "./pages/userlist/UserlistContainer";
+import SearchContainer from "./pages/serach/SearchContainer";
 import MessageContainer from "./pages/message/MessageContainer";
 import PostContainer from "./pages/post/PostContainer";
 
@@ -20,8 +21,8 @@ const App = () => {
         <Route path="/mydailylife" element={<MainContainer/>}>
             <Route path="home" element={<HomeContainer/>}/>
             <Route path='userlist' element={<UserlistContainer/>}/>
-            {/* <Route path='search' element={<SearchContainer/>}/> */}
-            {/* <Route path='message' element={<MessageContainer/>}/> */}
+            <Route path='search' element={<SearchContainer/>}/>
+            <Route path='message' element={<MessageContainer/>}/>
             <Route path='post' element={<PostContainer/>}/>
         </Route>
       </Routes>
