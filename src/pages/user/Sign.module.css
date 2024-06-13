@@ -13,7 +13,7 @@
 .sign_nav_container {
     width: 350px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     border: 1px solid #c1c1c1;

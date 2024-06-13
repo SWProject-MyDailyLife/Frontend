@@ -35,6 +35,12 @@ const SignIn = () => {
             });
     };
 
+    const guestLogin = () => {
+        sessionStorage.setItem('user_id', "guest");
+        alert("비회원으로 로그인하였습니다.");
+        navigate("/mydailylife"); // Adjust the path as needed for your guest user flow
+    };
+
     return (
         <>
             <div className={style.sign_input_container}>
@@ -52,8 +58,12 @@ const SignIn = () => {
                 <button className={style.buttons} onClick={onSubmit}>로그인</button>
             </div>
             <div className={style.sign_nav_container}>
-                <div>계정이 없으신가요?</div>
-                <div className={style.nav_link} onClick={() => navigate('/users/sign-up')}>가입하기</div>
+                <div>
+                    계정이 없으신가요? <span className={style.nav_link} onClick={() => navigate('/users/sign-up')}>가입하기</span>
+                </div>
+                <div>
+                    비회원 로그인 <span className={style.nav_link} onClick={guestLogin}>비회원 로그인</span>
+                </div>
             </div>
         </>
     );
